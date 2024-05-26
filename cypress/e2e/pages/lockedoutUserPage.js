@@ -3,8 +3,6 @@ export class lockedoutUser {
 
     static loginFlow() {
         const errorText = 'Epic sadface: Sorry, this user has been locked out.'
-
-        cy.clearCookies();
         cy.visit("/");
         cy.get(sauceSelectors.loginLogo).contains("Swag Labs");
         cy.get(sauceSelectors.username).click().type(Cypress.env('lockedoutUser'));
