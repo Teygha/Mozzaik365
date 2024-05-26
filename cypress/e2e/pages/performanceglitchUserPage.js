@@ -2,7 +2,7 @@ import { sauceSelectors } from "../../fixtures/pageSelectors"
 export class performanceUser {
 
     static pageLoad() {
-        const minLoadTime = 2000;
+        const minLoadTime = 2000; // individually defined load time
         cy.visit("/");
         cy.get(sauceSelectors.loginLogo).contains("Swag Labs");
         cy.get(sauceSelectors.username).click().type(Cypress.env('performanceglitchUser'));
@@ -14,12 +14,12 @@ export class performanceUser {
         const loadTime = endTime - startTime;
         cy.log('Page Load Time:', loadTime);
         console.log('Page Load Time:', loadTime);
-        expect(loadTime).to.be.greaterThan(minLoadTime);
+        expect(loadTime).to.be.greaterThan(minLoadTime); // asserting it takes more than 2 seconds to login
     });
     }
 
     static sortProductsbyPrice() {
-        const minActionTime = 2000;
+        const minActionTime = 2000; // individually defined load time
         const expectedSortedOrder = [
             'Sauce Labs Onesie',
             'Sauce Labs Bike Light',
@@ -38,14 +38,14 @@ export class performanceUser {
             });
             const endTime = performance.now();
             const actionTime = endTime - startTime;
-            expect(actionTime).to.be.greaterThan(minActionTime);
-            expect(actualSortedOrder).to.deep.equal(expectedSortedOrder);
+            expect(actionTime).to.be.greaterThan(minActionTime); // asserting it takes more than 2 seconds to sort
+            expect(actualSortedOrder).to.deep.equal(expectedSortedOrder); 
         });
     }
     
 
     static sortProductsbyName() {
-        const minActionTime = 2000;
+        const minActionTime = 2000; // individually defined load time
         const expectedSortedOrder = [
             'Test.allTheThings() T-Shirt (Red)',
             'Sauce Labs Onesie',
@@ -65,7 +65,7 @@ export class performanceUser {
             const endTime = performance.now();
             const actionTime = endTime - startTime;
             expect(actionTime).to.be.greaterThan(minActionTime);
-            expect(actualSortedOrder).to.deep.equal(expectedSortedOrder);
+            expect(actualSortedOrder).to.deep.equal(expectedSortedOrder); // asserting it takes more than 2 seconds to sort
         });
     }
     

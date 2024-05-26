@@ -51,7 +51,7 @@ export class problemUser {
             const productName = item.querySelector(sauceSelectors.inventoryItems).textContent.trim();
         return productName;
       });
-        expect(actualSortedOrder).not.to.deep.equal(expectedSortedOrder);
+        expect(actualSortedOrder).not.to.deep.equal(expectedSortedOrder); //asserting sorting fails based on the user type
         });
     }
 
@@ -75,6 +75,6 @@ export class problemUser {
         cy.get(sauceSelectors.postalCode).type('1234');
         cy.get(sauceSelectors.continueBtn).click();
         cy.url().should('not.include', '/checkout-step-two.html');
-        cy.get(sauceSelectors.errormessage).should('have.text', (errorMessage));
+        cy.get(sauceSelectors.errormessage).should('have.text', (errorMessage)); //asserting checkout cannot be completed based on the user type
     }
 }
